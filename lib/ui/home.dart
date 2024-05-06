@@ -19,37 +19,35 @@ class _HomeState extends State<Home> {
               AppBar(
                 toolbarHeight: 148,
                 backgroundColor: Color(0xFF45A5FF),
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 64,
-                              height: 58,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/logo.png'),
-                                  fit: BoxFit.cover,
-                                ),
+                flexibleSpace: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 64,
+                            height: 58,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/logo.png'),
+                                fit: BoxFit.cover,
                               ),
                             ),
-                            Text(
-                              'Shopan',
-                              style: GoogleFonts.dmSerifDisplay(
-                                  textStyle: TextStyle(
-                                      fontSize: 16, color: Colors.white)),
-                            ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            'Shopan',
+                            style: GoogleFonts.dmSerifDisplay(
+                                textStyle: TextStyle(
+                                    fontSize: 16, color: Colors.white)),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               Container(
