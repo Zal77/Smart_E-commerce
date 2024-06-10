@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+// import 'package:shopan/ui/daftar.dart';
 import 'package:shopan/ui/home.dart';
-// import 'ui/daftar.dart';
 
 void main() {
   runApp(const MainApp());

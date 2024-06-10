@@ -180,66 +180,79 @@ class _HomeState extends State<Home> {
               ],
             ),
             Container(
-              height: 224,
-              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 20),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    width: 164,
-                    height: 224,
-                    margin: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.15),
-                          spreadRadius: 2,
-                          blurRadius: 1,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.symmetric(vertical: 22),
+              width: double.infinity,
+              child: Text(
+                'Rekomendasi untuk anda',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              width: 164,
+              height: 264,
+              margin: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.15),
+                    spreadRadius: 3,
+                    blurRadius: 1,
+                    offset: Offset(0, 2),
                   ),
-                  Container(
-                    width: 164,
-                    height: 224,
-                    margin: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.15),
-                          spreadRadius: 2,
-                          blurRadius: 1,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 164,
-                    height: 224,
-                    margin: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.15),
-                          spreadRadius: 2,
-                          blurRadius: 1,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Add more containers here...
                 ],
               ),
-            )
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 104,
+                        width: double.infinity,
+                        padding: EdgeInsets.all(6),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            'assets/images/image1.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(6),
+                        child: Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar massa id nisi blandit, eu lobortis nulla pharetra. Nam tellus enim, accumsan ut sollicitudin nec, tristique sit amet ante. ',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 48,
+                    width: double.infinity,
+                    padding: EdgeInsets.all(6),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print('test');
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff0003E4)),
+                      child: Text(
+                        '+ Keranjang',
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
