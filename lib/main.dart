@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopan/ui/profile.dart';
 // import 'package:shopan/ui/daftar.dart';
-import 'package:shopan/ui/home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,6 +11,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Home());
+    return const MaterialApp(home: Profile());
   }
 }
