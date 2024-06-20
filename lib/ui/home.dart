@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:shopan/ui/profile.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,14 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // List<String> countryList = [
-  //   "PAKISTAN",
-  //   "INDIA",
-  //   "JAPAN",
-  //   "AUSTRALIA",
-  //   "RUSSIA",
-  //   "BELIZE"
-  // ];
   final List<String> imgList = [
     'assets/images/image1.jpg',
     'assets/images/image2.jpg',
@@ -38,10 +30,33 @@ class _HomeState extends State<Home> {
     'Profile',
   ];
 
+  void _navOntap(int index) {
+    setState(() {
+      _bottomNavIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Home()),
+        );
+        break;
+
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Profile()),
+        );
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 184,
         flexibleSpace: Stack(
           children: [
@@ -178,95 +193,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Rekomendasi untuk anda',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    height: 284,
-                    color: Colors.white,
-                    child: ListView.builder(
-                      itemCount: imgList.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          width: 164,
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.15),
-                                spreadRadius: 3,
-                                blurRadius: 1,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 104,
-                                    width: double.infinity,
-                                    padding: EdgeInsets.all(6),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
-                                      child: Image.asset(
-                                        'assets/images/image1.jpg',
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(6),
-                                    child: Text(
-                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar massa id nisi blandit, eu lobortis nulla pharetra. Nam tellus enim, accumsan ut sollicitudin nec, tristique sit amet ante. ',
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 48,
-                                width: double.infinity,
-                                padding: EdgeInsets.all(6),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    print('test');
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xff0003E4)),
-                                  child: Text(
-                                    '+ Keranjang',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
+            ProdukRekomendasi(imgList: imgList),
             Container(
               alignment: Alignment.topLeft,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -507,7 +434,7 @@ class _HomeState extends State<Home> {
               height: 64,
               color: Color(0xff8F8F8F),
               child: Text(
-                'Developer by kelompok 5',
+                'Developed by kelompok 5',
                 style: TextStyle(fontSize: 14, color: Colors.white),
               ),
             )
@@ -516,7 +443,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _bottomNavIndex,
-        onTap: (index) => setState(() => _bottomNavIndex = index),
+        onTap: _navOntap,
         items: List.generate(iconList.length, (index) {
           return BottomNavigationBarItem(
             icon: Icon(iconList[index]),
@@ -526,6 +453,102 @@ class _HomeState extends State<Home> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Color(0xff0003E4),
         unselectedItemColor: Color(0xff8F8F8F),
+      ),
+    );
+  }
+}
+
+class ProdukRekomendasi extends StatelessWidget {
+  final List<String> imgList;
+  ProdukRekomendasi({required this.imgList});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Rekomendasi untuk anda',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          Container(
+            alignment: Alignment.center,
+            height: 284,
+            color: Colors.white,
+            child: ListView.builder(
+              itemCount: imgList.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 164,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.15),
+                        spreadRadius: 3,
+                        blurRadius: 1,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            height: 104,
+                            width: double.infinity,
+                            padding: EdgeInsets.all(6),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                'assets/images/image1.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(6),
+                            child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar massa id nisi blandit, eu lobortis nulla pharetra. Nam tellus enim, accumsan ut sollicitudin nec, tristique sit amet ante. ',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 48,
+                        width: double.infinity,
+                        padding: EdgeInsets.all(6),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            print('test');
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xff0003E4)),
+                          child: Text(
+                            '+ Keranjang',
+                            style: TextStyle(fontSize: 14, color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }

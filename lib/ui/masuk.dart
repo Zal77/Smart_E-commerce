@@ -172,8 +172,6 @@ class _MasukState extends State<Masuk> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   print('Berpindah ke file home.dart');
-
-                                  //BERSIFAT SEMENTARA UNTUK TEST
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

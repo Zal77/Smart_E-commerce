@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:shopan/ui/profile.dart';
-// import 'package:shopan/ui/daftar.dart';
 import 'package:shopan/ui/home.dart';
 
 void main() {
